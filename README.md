@@ -1,6 +1,5 @@
 # notion2gitlab
-![img.png](img.png)
-
+![img_1.png](img_1.png)
 > **Convert Notion Database Exports to GitLab Issues** — A free, open-source tool to migrate your Notion tasks, tickets, and records into GitLab issues with full control over field mapping.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
