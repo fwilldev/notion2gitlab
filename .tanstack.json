@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "projectName": "notion2gitlab",
+  "framework": "react",
+  "mode": "file-router",
+  "typescript": true,
+  "tailwind": true,
+  "packageManager": "npm",
+  "chosenIntegrations": ["tanstack-query", "tanstack-store", "shadcn", "eslint"]
+}
