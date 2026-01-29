@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Link, useLocation, useNavigate } from '@tanstack/react-router'
 import {
   ArrowRightLeft,
-  Database,
   Home,
   Menu,
   RotateCcw,
