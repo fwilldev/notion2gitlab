@@ -1,4 +1,5 @@
 # notion2gitlab
+![img.png](img.png)
 
 > **Convert Notion Database Exports to GitLab Issues** — A free, open-source tool to migrate your Notion tasks, tickets, and records into GitLab issues with full control over field mapping.
 
@@ -10,6 +11,10 @@
 
 **notion2gitlab** is a browser-based tool that converts exported Notion databases (CSV + Markdown) into GitLab issues. Perfect for teams migrating from Notion to GitLab for project management, or anyone who wants to bulk-import structured data into GitLab.
 
+## The problem?
+
+Notion database exports lack consistency due to user-defined column names, varying property types, and flexible database structures.
+
 ### Use Cases
 
 - **Migrate Notion task boards** to GitLab issue trackers
@@ -19,48 +24,14 @@
 
 ---
 
-## Features
-
-| Feature                     | Description                                                     |
-| --------------------------- | --------------------------------------------------------------- |
-| **Notion Export Support**   | Works with Notion's native CSV + Markdown export format         |
-| **Flexible Field Mapping**  | Map any CSV column to issue title, labels, or target repository |
-| **Multi-Repository Import** | Route issues to different GitLab projects based on CSV data     |
-| **Markdown Descriptions**   | Use exported Markdown files as rich issue descriptions          |
-| **Row Filtering**           | Include/exclude rows based on column values before import       |
-| **Label Generation**        | Create GitLab labels from CSV columns or add static labels      |
-| **Preview Before Import**   | Review all issues before creating them in GitLab                |
-| **Progress Tracking**       | Real-time progress with pause/resume and result export          |
-
 ### Privacy & Security
 
 **100% Client-Side Processing** — Your data never leaves your browser:
 
-- GitLab tokens are stored in browser localStorage only
+- GitLab tokens are stored in browser localStorage only if configured
 - CSV and Markdown files are processed locally
 - API calls go directly from your browser to your GitLab instance
 - No server, no tracking, no data collection
-
----
-
-## How It Works
-
-```
-┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│   Connect   │ →  │   Upload    │ →  │  Configure  │ →  │   Import    │
-│   GitLab    │    │   Export    │    │   Mapping   │    │   Issues    │
-└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
-```
-
-**7-Step Wizard:**
-
-1. **Connect GitLab** — Enter your GitLab domain and personal access token
-2. **Select Export** — Choose your Notion database export folder
-3. **Map CSV Fields** — Configure how CSV columns are parsed
-4. **Filter Rows** — Include/exclude rows based on conditions
-5. **Map to Issues** — Assign columns to issue title, repository, labels
-6. **Preview** — Review all issues before creation
-7. **Import** — Create issues in GitLab with progress tracking
 
 ---
 

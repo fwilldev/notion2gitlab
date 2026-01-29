@@ -47,6 +47,10 @@ function saveToStorage(state: WizardState): void {
   try {
     const toSave = {
       ...state,
+      gitlab: {
+        ...state.gitlab,
+        token: state.gitlab.saveToken ? state.gitlab.token : '',
+      },
       notionExport: {
         ...state.notionExport,
         files: [],

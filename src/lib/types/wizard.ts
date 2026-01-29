@@ -6,6 +6,7 @@ export type WizardStep = 1 | 2 | 3 | 4 | 5 | 6 | 7
 export interface GitLabConfig {
   domain: string
   token: string
+  saveToken: boolean
   isConnected: boolean
   isValidating: boolean
   username: string | null
@@ -114,6 +115,7 @@ export const defaultWizardState: WizardState = {
   gitlab: {
     domain: '',
     token: '',
+    saveToken: false,
     isConnected: false,
     isValidating: false,
     username: null,

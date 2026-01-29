@@ -30,7 +30,7 @@ export function WizardStepper({
   completedSteps = [],
 }: WizardStepperProps) {
   return (
-    <div className="w-full bg-card border-b">
+    <div className="w-full glass-header">
       <div className="container max-w-6xl mx-auto px-4 py-4">
         <nav aria-label="Progress">
           <ol className="hidden md:flex items-center justify-between">
@@ -55,18 +55,18 @@ export function WizardStepper({
                   >
                     <span
                       className={cn(
-                        'flex h-10 w-10 items-center justify-center rounded-full border-2 text-sm font-semibold transition-colors',
+                        'flex h-10 w-10 items-center justify-center rounded-full border-2 text-sm font-semibold transition-all',
                         isCurrent &&
-                          'border-primary bg-primary text-primary-foreground',
+                          'border-primary bg-primary text-primary-foreground gold-glow',
                         isCompleted &&
-                          'border-primary bg-primary text-primary-foreground',
+                          'border-primary bg-primary text-primary-foreground gold-glow',
                         isPast &&
                           !isCompleted &&
-                          'border-muted-foreground bg-muted text-muted-foreground',
+                          'border-primary/40 bg-primary/10 text-primary/60',
                         !isCurrent &&
                           !isCompleted &&
                           !isPast &&
-                          'border-muted text-muted-foreground',
+                          'border-white/10 text-muted-foreground bg-white/[0.04]',
                       )}
                     >
                       {isCompleted ? (
@@ -78,8 +78,9 @@ export function WizardStepper({
                     <span
                       className={cn(
                         'mt-2 text-xs font-medium',
-                        isCurrent && 'text-foreground',
-                        !isCurrent && 'text-muted-foreground',
+                        isCurrent && 'text-primary',
+                        isCompleted && 'text-primary/80',
+                        !isCurrent && !isCompleted && 'text-muted-foreground',
                       )}
                     >
                       {step.title}
@@ -88,8 +89,10 @@ export function WizardStepper({
                   {index < STEPS.length - 1 && (
                     <div
                       className={cn(
-                        'mx-2 h-0.5 w-12 lg:w-20',
-                        isPast || isCompleted ? 'bg-primary' : 'bg-muted',
+                        'mx-2 h-0.5 w-12 lg:w-20 rounded-full transition-colors',
+                        isPast || isCompleted
+                          ? 'bg-primary/50'
+                          : 'bg-white/[0.08]',
                       )}
                     />
                   )}
@@ -103,12 +106,12 @@ export function WizardStepper({
               <span
                 className={cn(
                   'flex h-8 w-8 items-center justify-center rounded-full border-2 text-sm font-semibold',
-                  'border-primary bg-primary text-primary-foreground',
+                  'border-primary bg-primary text-primary-foreground gold-glow',
                 )}
               >
                 {currentStep}
               </span>
-              <span className="text-sm font-medium">
+              <span className="text-sm font-medium text-primary">
                 {STEPS.find((s) => s.number === currentStep)?.shortTitle}
               </span>
             </div>

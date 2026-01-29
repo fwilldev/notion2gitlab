@@ -21,6 +21,7 @@ import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
 import { Button } from '~/components/ui/button'
 import { Alert, AlertDescription, AlertTitle } from '~/components/ui/alert'
+import { Checkbox } from '~/components/ui/checkbox'
 import { WizardNavigation } from '~/components/wizard/WizardNavigation'
 import {
   setGitLabProjects,
@@ -51,6 +52,12 @@ function Step1GitLabConfig() {
       token: e.target.value,
       isConnected: false,
       error: null,
+    })
+  }
+
+  const handleSaveTokenChange = (checked: boolean) => {
+    updateGitLabConfig({
+      saveToken: checked,
     })
   }
 
@@ -126,12 +133,15 @@ function Step1GitLabConfig() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Server className="h-5 w-5" />
+            <Server className="h-5 w-5 text-primary" />
             Connection Settings
           </CardTitle>
           <CardDescription>
             Enter your GitLab instance URL and a personal access token with{' '}
-            <code className="bg-muted px-1 rounded">api</code> scope.
+            <code className="bg-white/[0.08] px-1.5 py-0.5 rounded-md text-primary text-xs">
+              api
+            </code>{' '}
+            scope.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -160,8 +170,30 @@ function Step1GitLabConfig() {
             />
             <p className="text-xs text-muted-foreground">
               Create a token in GitLab → Settings → Access Tokens with{' '}
-              <code className="bg-muted px-1 rounded">api</code> scope.
+              <code className="bg-white/[0.08] px-1.5 py-0.5 rounded-md text-primary text-xs">
+                api
+              </code>{' '}
+              scope.
             </p>
+            <div className="flex items-start gap-2 mt-3 pt-3 border-t border-white/[0.08]">
+              <Checkbox
+                id="save-token"
+                checked={state.gitlab.saveToken}
+                onCheckedChange={handleSaveTokenChange}
+              />
+              <div className="grid gap-1.5 leading-none">
+                <Label
+                  htmlFor="save-token"
+                  className="text-sm font-normal cursor-pointer"
+                >
+                  Save token in browser
+                </Label>
+                <p className="text-xs text-muted-foreground">
+                  If unchecked, you'll need to re-enter the token when you
+                  reload this page. Only enable this on trusted devices.
+                </p>
+              </div>
+            </div>
           </div>
 
           {state.gitlab.error && (
@@ -172,9 +204,9 @@ function Step1GitLabConfig() {
           )}
 
           {state.gitlab.isConnected && (
-            <Alert className="border-green-500 bg-green-500/10">
-              <CheckCircle2 className="h-4 w-4 text-green-500" />
-              <AlertDescription className="text-green-700 dark:text-green-400">
+            <Alert className="border-emerald-500/30 bg-emerald-500/10">
+              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              <AlertDescription className="text-emerald-300">
                 Connected as <strong>{state.gitlab.username}</strong> with
                 access to <strong>{state.gitlab.projects.length}</strong>{' '}
                 projects.
@@ -206,19 +238,22 @@ function Step1GitLabConfig() {
         </CardContent>
       </Card>
 
-      <Alert className="border-blue-500/50 bg-blue-500/10">
-        <Shield className="h-4 w-4 text-blue-500" />
-        <AlertTitle className="text-blue-700 dark:text-blue-400">
-          Privacy & Security
-        </AlertTitle>
-        <AlertDescription className="text-blue-700/80 dark:text-blue-400/80 text-sm space-y-2">
+      <Alert className="border-primary/20 bg-primary/5">
+        <Shield className="h-4 w-4 text-primary" />
+        <AlertTitle className="text-primary">Privacy & Security</AlertTitle>
+        <AlertDescription className="text-foreground/70 text-sm space-y-2">
           <p>
             This app runs <strong>entirely in your browser</strong>. Your data
             never leaves your device:
           </p>
           <ul className="list-disc list-inside space-y-1 ml-2">
             <li>
-              Your GitLab token is stored in your browser's local storage only
+              Your GitLab token is{' '}
+              <strong>
+                only saved in browser storage if you enable "Save token in
+                browser"
+              </strong>
+              . Otherwise, it's kept in memory for this session only.
             </li>
             <li>
               CSV and Markdown files are processed locally and never uploaded
@@ -227,10 +262,10 @@ function Step1GitLabConfig() {
               API calls go directly from your browser to your GitLab instance
             </li>
           </ul>
-          <p className="text-xs mt-2">
+          <p className="text-xs mt-2 text-muted-foreground">
             <Info className="h-3 w-3 inline mr-1" />
             To clear all stored data, use your browser's developer tools to
-            clear localStorage or click "Start Over" at the end of the wizard.
+            clear localStorage or click "Start Over" at the top right corner.
           </p>
         </AlertDescription>
       </Alert>
