@@ -36,9 +36,16 @@ Notion database exports lack consistency due to user-defined column names, varyi
 
 ## Quick Start
 
+### Online Version (Recommended)
+
+**🚀 Use the app directly in your browser:**
+
+👉 **[https://fwilldev.github.io/notion2gitlab/](https://fwilldev.github.io/notion2gitlab/)**
+
+No installation required! The application runs entirely in your browser with 100% client-side processing.
+
 ### Prerequisites
 
-- Node.js 18+
 - A GitLab account with a [Personal Access Token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) (requires `api` scope)
 - A Notion database exported as CSV + Markdown
 
@@ -48,11 +55,13 @@ Notion database exports lack consistency due to user-defined column names, varyi
 2. Click `•••` → **Export** → **Markdown & CSV**
 3. Unzip the downloaded file
 
-### Run notion2gitlab
+### Run Locally (Optional)
+
+If you prefer to run the application locally:
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/notion2gitlab.git
+git clone https://github.com/fwilldev/notion2gitlab.git
 cd notion2gitlab
 
 # Install dependencies
@@ -62,7 +71,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) and follow the wizard.
+Open [http://localhost:3000/notion2gitlab/](http://localhost:3000/notion2gitlab/) and follow the wizard.
 
 ---
 
