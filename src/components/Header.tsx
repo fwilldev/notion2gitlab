@@ -2,12 +2,14 @@ import { useState } from 'react'
 import { Link, useLocation, useNavigate } from '@tanstack/react-router'
 import {
   ArrowRightLeft,
+  Github,
   Home,
   Menu,
   RotateCcw,
   X,
 } from 'lucide-react'
 import { Button } from '~/components/ui/button'
+import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip'
 import { resetWizard } from '~/lib/stores/wizard-store'
 
 export function Header() {
@@ -50,17 +52,33 @@ export function Header() {
           </h1>
         </div>
 
-        {isInWizard && (
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleStartOver}
-            className="text-foreground/70 hover:text-foreground"
-          >
-            <RotateCcw className="h-4 w-4 mr-2" />
-            Start Over
-          </Button>
-        )}
+        <div className="flex items-center gap-2">
+          {isInWizard && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleStartOver}
+              className="text-foreground/70 hover:text-foreground"
+            >
+              <RotateCcw className="h-4 w-4 mr-2" />
+              Start Over
+            </Button>
+          )}
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <a
+                href="https://github.com/fwilldev/notion2gitlab"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 hover:bg-white/[0.08] rounded-xl transition-colors"
+                aria-label="View on GitHub"
+              >
+                <Github size={24} />
+              </a>
+            </TooltipTrigger>
+            <TooltipContent>View on GitHub</TooltipContent>
+          </Tooltip>
+        </div>
       </header>
 
       <aside
