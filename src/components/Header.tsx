@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useLocation, useNavigate } from '@tanstack/react-router'
 import {
   ArrowRightLeft,
+  Github,
   Home,
   Menu,
   RotateCcw,
@@ -50,17 +51,28 @@ export function Header() {
           </h1>
         </div>
 
-        {isInWizard && (
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleStartOver}
-            className="text-foreground/70 hover:text-foreground"
+        <div className="flex items-center gap-2">
+          {isInWizard && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleStartOver}
+              className="text-foreground/70 hover:text-foreground"
+            >
+              <RotateCcw className="h-4 w-4 mr-2" />
+              Start Over
+            </Button>
+          )}
+          <a
+            href="https://github.com/fwilldev/notion2gitlab"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 hover:bg-white/[0.08] rounded-xl transition-colors"
+            aria-label="View on GitHub"
           >
-            <RotateCcw className="h-4 w-4 mr-2" />
-            Start Over
-          </Button>
-        )}
+            <Github size={24} />
+          </a>
+        </div>
       </header>
 
       <aside
