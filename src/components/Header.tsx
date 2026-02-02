@@ -9,6 +9,7 @@ import {
   X,
 } from 'lucide-react'
 import { Button } from '~/components/ui/button'
+import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip'
 import { resetWizard } from '~/lib/stores/wizard-store'
 
 export function Header() {
@@ -63,15 +64,20 @@ export function Header() {
               Start Over
             </Button>
           )}
-          <a
-            href="https://github.com/fwilldev/notion2gitlab"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 hover:bg-white/[0.08] rounded-xl transition-colors"
-            aria-label="View on GitHub"
-          >
-            <Github size={24} />
-          </a>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <a
+                href="https://github.com/fwilldev/notion2gitlab"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 hover:bg-white/[0.08] rounded-xl transition-colors"
+                aria-label="View on GitHub"
+              >
+                <Github size={24} />
+              </a>
+            </TooltipTrigger>
+            <TooltipContent>View on GitHub</TooltipContent>
+          </Tooltip>
         </div>
       </header>
 
